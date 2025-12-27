@@ -1,5 +1,7 @@
 // src/app.ts
 import Fastify from 'fastify'
+import swagger from '@fastify/swagger'
+import swaggerUi from '@fastify/swagger-ui'
 
 import { env } from './env'
 import { authRoutes } from './modules/auth/auth.routes'
@@ -24,6 +26,25 @@ export function buildApp() {
     logger: {
       level: env.NODE_ENV === 'development' ? 'debug' : 'info'
     }
+  })
+
+  app.register(swagger, {
+    openapi: {
+      info: {
+        title: 'Sennit API',
+        description: 'API documentation for Sennit services',
+        version: '1.0.0'
+      }
+    }
+  })
+
+  app.register(swaggerUi, {
+    routePrefix: '/docs',
+    uiConfig: {
+      docExpansion: 'list',
+      deepLinking: false
+    },
+    staticCSP: true
   })
 
   app.register(async (v1) => {

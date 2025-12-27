@@ -1,6 +1,6 @@
 // src/server.ts
 import { buildApp } from './app'
-import { env } from '@sennit/env/server'
+import { env } from './env'
 
 export async function startServer() {
   const app = buildApp()

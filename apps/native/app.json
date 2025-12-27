@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "scheme": "sennit",
+    "userInterfaceStyle": "automatic",
+    "orientation": "default",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "sennit",
+    "slug": "sennit",
+    "plugins": ["expo-font"],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

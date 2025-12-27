@@ -1,0 +1,42 @@
+{
+  "name": "sennit",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "catalog": {
+      "dotenv": "^17.2.2",
+      "zod": "^4.1.13",
+      "typescript": "^5",
+      "@types/bun": "^1.3.4",
+      "@tanstack/react-query": "^5.90.12"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:native": "turbo -F native dev",
+    "dev:web": "turbo -F web dev",
+    "dev:server": "turbo -F server dev",
+    "db:push": "turbo -F @sennit/db db:push",
+    "db:studio": "turbo -F @sennit/db db:studio",
+    "db:generate": "turbo -F @sennit/db db:generate",
+    "db:migrate": "turbo -F @sennit/db db:migrate"
+  },
+  "dependencies": {
+    "dotenv": "catalog:",
+    "zod": "catalog:",
+    "@sennit/env": "workspace:*"
+  },
+  "devDependencies": {
+    "turbo": "^2.6.3",
+    "typescript": "catalog:",
+    "@types/bun": "catalog:",
+    "@sennit/config": "workspace:*"
+  },
+  "packageManager": "bun@1.3.4"
+}

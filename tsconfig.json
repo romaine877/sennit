@@ -1,0 +1,3 @@
+{
+  "extends": "@sennit/config/tsconfig.base.json"
+}

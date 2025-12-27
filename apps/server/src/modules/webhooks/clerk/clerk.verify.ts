@@ -1,7 +1,7 @@
 // webhooks/clerk/clerk.verify.ts
 import { Webhook } from 'svix'
 import type { FastifyRequest } from 'fastify'
-import { env } from '@sennit/env/server'
+import { env } from '../../../env'
 
 export async function verifyClerkWebhook(req: FastifyRequest) {
   const payload = req.body as Buffer

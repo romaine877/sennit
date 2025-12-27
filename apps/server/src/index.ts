@@ -1,29 +1,17 @@
-import fastifyCors from "@fastify/cors";
-import { env } from "@sennit/env/server";
-import Fastify from "fastify";
 
-const baseCorsConfig = {
-  origin: env.CORS_ORIGIN,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-  credentials: true,
-  maxAge: 86400,
-};
+// src/index.ts
+import { startServer } from './server'
 
-const fastify = Fastify({
-  logger: true,
-});
+async function bootstrap() {
+  try {
 
-fastify.register(fastifyCors, baseCorsConfig);
-
-fastify.get("/", async () => {
-  return "OK";
-});
-
-fastify.listen({ port: 3000 }, (err) => {
-  if (err) {
-    fastify.log.error(err);
-    process.exit(1);
+    await startServer()
+  } catch (err) {
+    console.error('❌ Failed to start application', err)
+    process.exit(1)
   }
-  console.log("Server running on port 3000");
-});
+}
+
+bootstrap()
+
+
